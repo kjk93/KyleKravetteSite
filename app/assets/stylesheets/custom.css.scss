@@ -7,10 +7,60 @@
   box-sizing: border-box;
 }
 
+$main-teal: #18c7a4;
+
 /* universal */
 .center{
 	text-align: center;
 	h1{
 		margin-bottom: 10px;
+	}
+}
+
+/* Logo */
+#logo{
+	a{
+		color: $main-teal;
+		font-size: 24pt;
+		line-height: normal;
+		letter-spacing: -2px;
+		text-decoration: none;
+	}
+}
+
+/* Tabs 
+.nav-tabs > li.active > a{
+	color: orange;
+}*/
+
+.nav-tabs > li.active > a{
+	color: orange;
+
+	&:focus{
+		color: orange;
+	}
+
+	&:hover{
+		color: orange;
+	}
+}
+
+.inactive-tab{
+	color: $main-teal;
+}
+
+footer{
+	margin-top: 45px;
+	padding-top: 5px;
+	padding-left: 20px;
+	border-top: 1px solid #eaeaea;
+	opacity: .7;
+	color: gray;
+
+	a{
+		color: gray;
+		&:hover{
+			color: gray;
+		}
 	}
 }

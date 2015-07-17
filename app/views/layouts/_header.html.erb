@@ -1,0 +1,14 @@
+<nav class="navbar navbar-static-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<!-- Place Logo here in the future -->
+			<div class="navbar-link navbar-brand" id="logo"><%= link_to "Kravette Lighting Design", root_path %></div>
+		</div>
+		<ul class="nav navbar-nav nav-tabs navbar-right">
+			<li class="active"><%= link_to "Home", root_path, data: {toggle: "tab"}, class: "activated-tab" %></li>
+			<li><%= link_to "Resume", '#', data: {toggle: "tab"}, class: "inactive-tab" %></li>
+			<li><%= link_to "Photos", '#', data: {toggle: "tab"}, class: "inactive-tab" %></li>
+			<li><%= link_to "Contact", '#', data: {toggle: "tab"}, class: "inactive-tab" %></li>
+		</ul>
+	</div>
+</nav>
