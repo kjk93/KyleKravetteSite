@@ -1,5 +1,29 @@
-<h1>Edit Pictures</h1>
+<h1>Portfolio</h1>
 
-name: <%= @user.name %>
-email: <%= @user.email %>
-admin: <%= @user.admin %>
+<div class="row">
+	<h2>Your Slideshow Pictures</h2>
+</div>
+
+<div class="row">
+	For slidehow pictures
+</div>
+
+<div class="row">
+	<h2>Folders</h2>
+</div>
+
+<div class="row">
+	<%= form_for(@folder, html: {class: "form-horizontal"}) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div class="form-group">
+			<%= f.label :title, class: "col-xs-1 col-xs-offset-4 control-label" %>
+			<div class="col-xs-2">
+				<%= f.text_field :title, class: "form-control" %>
+			</div>
+
+			<div class="col-xs-3">
+				<%= f.submit "Create Folder", class: "btn btn-primary" %>
+			</div>
+		</div>
+	<% end %>
+</div>
