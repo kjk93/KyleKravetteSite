@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'main_page#temp'
   get 'home' => 'main_page#home'
-  get 'admin' => 'users#new'
-  post 'users' => 'users#create'
-  get 'users/:id' => 'users#show', as: 'user'
+  get 'admin' => 'sessions#new'
+  post 'admin' => 'sessions#create'
+  #post 'users' => 'users#create'
+  #get 'users/:id' => 'users#show', as: 'user'
+  resources :users, only: [:new, :create, :show]
   resources :folders
 
   # The priority is based upon order of creation: first created -> highest priority.
