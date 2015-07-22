@@ -1,6 +1,8 @@
 class FoldersController < ApplicationController
+	before_action :logged_in_user, only: [:create, :destroy]
+
 	def create
-		@folder = Folder.new(folder_params)
+		@folder = current_user.folders.build(folder_params)
 		if @folder.save
 			flash[:success]="#{@folder.title} folder has been created"
 			redirect_to @folder

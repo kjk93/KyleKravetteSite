@@ -1,23 +1,25 @@
 <% provide(:title, "Sign In") %>
 
-<h1>Sign In</h1>
+<div class="container-fluid">
+	<h1>Sign In</h1>
 
-<div class="row">
-	<%= form_for(:session, url: admin_path, html: {class: "form-horizontal"}) do |f| %>
-		<div class="form-group">
-			<%= f.label :email, class: "col-xs-1 col-xs-offset-4 control-label" %>
-			<div class="col-xs-3">
-				<%= f.text_field :email, class: "form-control" %>
+	<div class="row">
+		<%= form_for(:session, url: admin_path, html: {class: "form-horizontal"}) do |f| %>
+			<div class="form-group">
+				<%= f.label :email, class: "col-xs-1 col-xs-offset-4 control-label" %>
+				<div class="col-xs-3">
+					<%= f.text_field :email, class: "form-control" %>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :password, class: "col-xs-1 col-xs-offset-4 control-label" %>
-			<div class="col-xs-3">
-				<%= f.password_field :password, class: "form-control" %>
+			<div class="form-group">
+				<%= f.label :password, class: "col-xs-1 col-xs-offset-4 control-label" %>
+				<div class="col-xs-3">
+					<%= f.password_field :password, class: "form-control" %>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<center><%= f.submit "Log in", class: "btn btn-primary btn-lg" %></center>
-		</div>
-	<% end %>
+			<div class="form-group">
+				<center><%= f.submit "Log in", class: "btn btn-primary btn-lg" %></center>
+			</div>
+		<% end %>
+	</div>
 </div>

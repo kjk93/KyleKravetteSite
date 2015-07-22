@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   		unless logged_in?
   			store_location
   			flash[:warning] = "Please log in"
-  			redirect_to login_url
+  			redirect_to admin_url
   		end
   	end
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  picture: MyString
+  description: MyText
+  order: 1
+  folder_id: 
+
+two:
+  picture: MyString
+  description: MyText
+  order: 1
+  folder_id: 
