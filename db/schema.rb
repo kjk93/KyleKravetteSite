@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721160157) do
+ActiveRecord::Schema.define(version: 20150722050730) do
 
 # Could not dump table "folders" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150721160157) do
     t.integer  "folder_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "title"
   end
 
   add_index "pictures", ["folder_id", "order"], name: "index_pictures_on_folder_id_and_order"

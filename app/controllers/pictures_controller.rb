@@ -3,22 +3,25 @@ class PicturesController < ApplicationController
 		count = 1
 		message = ""
 		@folder = Folder.find(params[:folder])
-		byebug
+		count += @folder.pictures.count
+		name = @folder.title
 		params[:picture][:pictures].each do |pic|
-			byebug
 			@picture = @folder.pictures.build(picture: pic)
-			byebug
 			@picture.update_attributes(order: count)
-			byebug
+			@picture.update_attributes(title: "#{name}_#{count}")
 			if @picture.save
-				count += 1
 				message += "saved picture #{count}, "
+				count += 1
 			else
 				message += "picture #{count} failed"
 			end
 		end
 		flash[:success] = message
 		redirect_to @folder
+	end
+
+	def edit
+		@picture = Picture.find(params[:id])
 	end
 
 	private

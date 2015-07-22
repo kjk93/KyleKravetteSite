@@ -1,24 +1,18 @@
 <div class="container-fluid">
-
-	<h1><%="This is the page for the #{@folder.title}" %></h1>
-
-	<div class="center jumbotron">
+	<h1><%="This is the page for the #{@folder.title}" %></h1>	
+	<% if @folder.pictures.any? %>
 		<div class="row">
-			<h2><%= "#{@folder.title} has no pictures in it." %></h2>
+			<ol class="pictures">
+				<%= render @pictures %>
+			</ol>
 		</div>
-		<% if @folder.pictures.any? %>
+		<%= render 'add_picture' %>
+	<% else %>
+		<div class="center jumbotron">
 			<div class="row">
-				<ol class="pictures">
-					<%= render @pictures %>
-				</ol>
+				<h2><%= "#{@folder.title} has no pictures in it." %></h2>
 			</div>
-		<% end %>
-		<div class="row">
-			<%= form_for(Picture.new) do |f| %>
-				<center><%= f.file_field :pictures, multiple: true, id: "file_input" %></center>
-				<div><%= hidden_field_tag :folder, @folder.id %></div>
-				<%= f.submit "Add Pictures", class: "btn btn-primary btn-large" %>
-			<% end %>
+			<%= render 'add_picture' %>
 		</div>
-	</div>
+	<% end %>
 </div>

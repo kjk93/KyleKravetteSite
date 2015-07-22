@@ -3,6 +3,7 @@ class Picture < ActiveRecord::Base
   default_scope {order(order: :asc)}
   mount_uploader :picture, PicturesUploader
   validates :picture, presence: true, allow_blank: false
+  validates :title, presence: true, allow_blank: false
   validates :order, presence: true
   validates :description, length: {maximum: 500}
   validate :picture_size
