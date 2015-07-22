@@ -1,6 +1,6 @@
 class Picture < ActiveRecord::Base
   belongs_to :folder
-  default_scope -> {order(order: :desc)}
+  default_scope {order(order: :asc)}
   mount_uploader :picture, PicturesUploader
   validates :picture, presence: true, allow_blank: false
   validates :order, presence: true

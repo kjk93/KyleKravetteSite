@@ -13,15 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20150721160157) do
 
-  create_table "folders", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-  end
-
-  add_index "folders", ["title"], name: "index_folders_on_title", unique: true
-  add_index "folders", ["user_id"], name: "index_folders_on_user_id"
+# Could not dump table "folders" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "pictures", force: :cascade do |t|
     t.string   "picture"

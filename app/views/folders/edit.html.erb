@@ -1,0 +1,14 @@
+<%= provide(:title, "#{@folder.title} Edit") %>
+<div class="container">
+	<h1><%="This is the page for the #{@folder.title}" %></h1>
+
+	<div class="row">
+		<div class="center jumbotron">
+			<h2><%= "You currently have no photos in #{@folder.title}." %></h2>
+			<%= form_for(@folder) do |f| %>
+				<center><%= f.file_field :photos, multiple: true, accept: 'image/jpeg,image/gif,image/png', id: "test" %></center>
+				<%= f.submit "Add Pictures", class: "btn btn-primary btn-lg", id: "addPic" %>
+			<% end %>
+		</div>
+	</div>
+</div>
