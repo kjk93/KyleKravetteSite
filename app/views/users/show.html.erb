@@ -30,4 +30,14 @@
 			</div>
 		<% end %>
 	</div>
+
+	<% if @user.folders.any? %>
+		<div class="row">
+			<ol class="folders">
+				<%= render @folders %>
+			</ol>
+		</div>
+	<% end %>
+
+
 </div>

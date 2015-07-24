@@ -1,1 +1,25 @@
 <% provide(:title, @picture.title) %>
+
+<div class="container">
+	<div class="row">
+		<h1><%= @picture.title %></h1>
+	</div>
+
+	<div class="row">
+		<center><%= image_tag @picture.picture.url %></center>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= form_for(@picture) do |f| %>
+				<%= f.label :description %>
+				<%= f.text_area :description, class: "form-control" %>
+
+				<%= f.label :order %>
+				<%= f.number_field :order, class: "form-control" %>
+
+				<%= f.submit "Save", class: "btn btn-success" %>
+			<% end %>
+		</div>
+	</div>
+</div>

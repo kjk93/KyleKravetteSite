@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home' => 'main_page#home'
   get 'admin' => 'sessions#new'
   post 'admin' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   #post 'users' => 'users#create'
   #get 'users/:id' => 'users#show', as: 'user'
   resources :users, only: [:new, :create, :show]

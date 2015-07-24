@@ -32,10 +32,7 @@ h1, h2{
 	}
 }
 
-/* Tabs 
-.nav-tabs > li.active > a{
-	color: orange;
-}*/
+/* Tabs */
 
 .nav-tabs > li.active > a{
 	color: orange;
@@ -53,6 +50,7 @@ h1, h2{
 	color: $main-teal;
 }
 
+/* footer */
 footer{
 	margin-top: 45px;
 	padding-top: 5px;
@@ -80,4 +78,19 @@ footer{
 	strong{
 		font-size: 20pt;
 	}
+}
+
+/* Buttons */
+.btn{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.delete{
+	margin-left: 20px;
+}
+
+/* images */
+.thumbnail > img{
+	border: 2px solid;
 }

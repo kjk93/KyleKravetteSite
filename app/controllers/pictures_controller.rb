@@ -10,18 +10,45 @@ class PicturesController < ApplicationController
 			@picture.update_attributes(order: count)
 			@picture.update_attributes(title: "#{name}_#{count}")
 			if @picture.save
-				message += "saved picture #{count}, "
-				count += 1
+				#create thumbnail
+				@thumbnail = @picture.build_thumbnail(pic: pic)
+				@thumbnail.update_attributes(title: "#{@picture.title}_thumb")
+				if @thumbnail.save
+					message += "saved picture #{count}, "
+					count += 1
+				else
+					message += "thumbnail #{count} failed"
+				end
 			else
 				message += "picture #{count} failed"
 			end
 		end
 		flash[:success] = message
+
 		redirect_to @folder
 	end
 
 	def edit
 		@picture = Picture.find(params[:id])
+	end
+
+	def update
+		@picture = Picture.find(params[:id])
+		if @picture.update_attributes(picture_params)
+			flash[:success]="#{@picture.title} was updated!"
+			redirect_to folder_path(@picture.folder_id)
+		else
+			flash[:warning]="#{@picture.title} failed to update"
+			redirect_to edit_picture_path(@picture)
+		end
+	end
+
+	def destroy
+		@picture = Picture.find(params[:id])
+		folder = Folder.find_by(id: @picture.folder_id)
+		@picture.delete
+		flash[:success]="Picture deleted"
+		redirect_to folder
 	end
 
 	private
