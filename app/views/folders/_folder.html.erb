@@ -2,6 +2,8 @@
 	<div class="thumbnail">
 		<% if folder.pictures.any? %>
 			<%= link_to image_tag(folder.pictures.first.thumbnail.pic.url), folder_path(folder.id) %>
+		<% else %>
+			<%= link_to image_tag("folder.png", alt: "folder"), folder_path(folder.id) %>
 		<% end %>
 		<div class="caption">
 			<p><strong><%= "#{folder.title}" %></strong></p>
