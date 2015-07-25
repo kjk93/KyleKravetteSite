@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 			if @user.save
 				@user.update_attributes(admin: true)
 				flash[:success]="Admin Account Created"
+				log_in(@user)
 			end
 			redirect_to user_path(@user)
 		else
@@ -44,8 +45,8 @@ class UsersController < ApplicationController
 		end
 
 		def admin_unless
-			if !logged_in? && !User.first.nil?
-				redirect_to root_url
+			if !logged_in?
+				redirect_to root_url unless User.first.nil?
 			else
 				redirect_to root_url unless current_user.admin?
 			end
