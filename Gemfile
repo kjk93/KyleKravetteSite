@@ -7,6 +7,7 @@ gem 'bcrypt'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'fog-aws'
 gem 'bootstrap-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
