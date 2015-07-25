@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	before_action :logged_in_user
+	before_action :logged_in_user, only: :show
+	before_action :admin_unless
 
 	def new
 		@user = User.new
@@ -40,5 +41,13 @@ class UsersController < ApplicationController
 
 		def user_params
 			params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		end
+
+		def admin_unless
+			if !logged_in? && !User.first.nil?
+				redirect_to root_url
+			else
+				redirect_to root_url unless current_user.admin?
+			end
 		end
 end
