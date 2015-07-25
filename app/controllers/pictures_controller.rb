@@ -45,8 +45,10 @@ class PicturesController < ApplicationController
 
 	def destroy
 		@picture = Picture.find(params[:id])
+		@thumbnail = @picture.thumbnail
 		folder = Folder.find_by(id: @picture.folder_id)
 		@picture.delete
+		@thumbnail.delete
 		flash[:success]="Picture deleted"
 		redirect_to folder
 	end

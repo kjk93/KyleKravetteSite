@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'thumbnails/destroy'
+
+  get 'thumbnail/destroy'
+
   root 'main_page#temp'
   get 'home' => 'main_page#home'
   get 'admin' => 'sessions#new'
