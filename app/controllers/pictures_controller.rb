@@ -7,8 +7,7 @@ class PicturesController < ApplicationController
 		name = @folder.title
 		params[:picture][:pictures].each do |pic|
 			@picture = @folder.pictures.build(picture: pic)
-			@picture.update_attributes(order: count)
-			@picture.update_attributes(title: "#{name}_#{count}")
+			@picture.update_attributes(order: count, title: "#{name}_#{count}", user_id: @folder.user_id)
 			if @picture.save
 				#create thumbnail
 				@thumbnail = @picture.build_thumbnail(pic: pic)

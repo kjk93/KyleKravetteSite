@@ -11,13 +11,45 @@ class UsersController < ApplicationController
 		if User.first.nil?
 			if @user.save
 				@user.update_attributes(admin: true)
-				flash[:success]="Admin Account Created"
+				@slideshow = @user.build_slideshow
+				if @slideshow.save
+					message = "slideshow saved"
+					for i in 1..5
+						@slideslot = @slideshow.slideslots.build(number: i)
+						if @slideslot.save
+							message += ", slot_#{@slideslot.number} saved"
+						else
+							message += ", slot_#{@slideslot.number} failed"
+						end
+					end
+				else
+					message = "slideshow failed"
+				end
+				flash[:success]=message
+
+				#flash[:success]="Admin Account Created"
 				log_in(@user)
 			end
 			redirect_to user_path(@user)
 		else
 			if @user.save
-				flash[:success]="Account Created"
+				@slideshow = @user.build_slideshow
+				if @slideshow.save
+					message = "slideshow saved"
+					for i in 1..5
+						@slideslot = @slideshow.slideslots.build(number: i)
+						if @slideslot.save
+							message += ", slot_#{@slideslot.number} saved"
+						else
+							message += ", slot_#{@slideslot.number} failed"
+						end
+					end
+				else
+					message = "slideshow failed"
+				end
+				flash[:success]=message
+
+				#flash[:success]="Account Created"
 				redirect_to user_path(@user)
 			else
 				render 'new'

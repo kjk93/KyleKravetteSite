@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724051240) do
+ActiveRecord::Schema.define(version: 20150726020529) do
 
 # Could not dump table "folders" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -24,10 +24,30 @@ ActiveRecord::Schema.define(version: 20150724051240) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "title"
+    t.integer  "user_id"
   end
 
   add_index "pictures", ["folder_id", "order"], name: "index_pictures_on_folder_id_and_order"
   add_index "pictures", ["folder_id"], name: "index_pictures_on_folder_id"
+  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id"
+
+  create_table "slideshows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "slideshows", ["user_id"], name: "index_slideshows_on_user_id"
+
+  create_table "slideslots", force: :cascade do |t|
+    t.string   "picture"
+    t.integer  "slideshow_id"
+    t.integer  "number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "slideslots", ["slideshow_id"], name: "index_slideslots_on_slideshow_id"
 
   create_table "thumbnails", force: :cascade do |t|
     t.string   "pic"
