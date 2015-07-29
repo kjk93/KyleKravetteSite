@@ -11,41 +11,32 @@ class UsersController < ApplicationController
 		if User.first.nil?
 			if @user.save
 				@user.update_attributes(admin: true)
-				@slideshow = @user.build_slideshow
-				if @slideshow.save
-					message = "slideshow saved"
-					for i in 1..5
-						@slideslot = @slideshow.slideslots.build(number: i)
-						if @slideslot.save
-							message += ", slot_#{@slideslot.number} saved"
-						else
-							message += ", slot_#{@slideslot.number} failed"
-						end
+				message = ""
+				for i in 1..5
+					@slideslot = @user.slideslots.build(number: i)
+					if @slideslot.save
+						message += ", slot_#{@slideslot.number} saved"
+					else
+						message += ", slot_#{@slideslot.number} failed"
 					end
-				else
-					message = "slideshow failed"
 				end
-				flash[:success]=message
-
 				#flash[:success]="Admin Account Created"
 				log_in(@user)
+				redirect_to user_path(@user)
+			else
+				render 'new'
 			end
-			redirect_to user_path(@user)
+			flash[:success]=message
 		else
-			if @user.save
-				@slideshow = @user.build_slideshow
-				if @slideshow.save
-					message = "slideshow saved"
-					for i in 1..5
-						@slideslot = @slideshow.slideslots.build(number: i)
-						if @slideslot.save
-							message += ", slot_#{@slideslot.number} saved"
-						else
-							message += ", slot_#{@slideslot.number} failed"
-						end
+			if @user.save	
+				message = ""
+				for i in 1..5
+					@slideslot = @user.slideslots.build(number: i)
+					if @slideslot.save
+						message += ", slot_#{@slideslot.number} saved"
+					else
+						message += ", slot_#{@slideslot.number} failed"
 					end
-				else
-					message = "slideshow failed"
 				end
 				flash[:success]=message
 
@@ -61,6 +52,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@folder = Folder.new
 		@folders = @user.folders
+		@slideslots = @user.slideslots
 	end
 
 	private

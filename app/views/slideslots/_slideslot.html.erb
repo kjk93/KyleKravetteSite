@@ -1,0 +1,16 @@
+<div class="col-xs-2">
+	<div class="thumbnail">
+		<% if slideslot.picture.nil? %>
+			<%= content_tag(:a, content_tag(:div, content_tag(:center, tag("span", class: "glyphicon glyphicon-plus")), class: "empty_picture"), href: "/slideslots/#{slideslot.id}/edit") %>
+			<div class="caption">
+				<p>Add picture to slideshow</p>
+			</div>
+		<% else %>
+			<% picture = Picture.find_by(id: slideslot.picture_id) %>
+			<%= image_tag picture.snapshot.image.url %>
+			<div class="caption">
+				<%= link_to "Change", edit_slideslot_path(slideslot.id), class: "btn btn-primary btn-sm", id: "slide-change" %>
+			</div>
+		<% end %>
+	</div>
+</div>

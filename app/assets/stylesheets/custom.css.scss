@@ -8,6 +8,8 @@
 }
 
 $main-teal: #18c7a4;
+$text-teal: #28a189;
+$hover-orange: #eb8a0c;
 
 /* universal */
 .center{
@@ -90,12 +92,79 @@ footer{
 	margin-left: 20px;
 }
 
-#folders{
+.main-nav{
 	margin-top: 25px;
 	margin-left: -65px;
+	background-color: orange;
+	border-color: orange;
+	color: white;
+	&:hover{
+		background-color: orange;
+		border-color: orange;
+		color: white;	
+	}
+	&:active{
+		border-color: $hover-orange;
+		background-color: $hover-orange;
+		color: white;
+	}
+	&:focus{
+		border-color: $hover-orange;
+		background-color: $hover-orange;
+		color: white;
+	}
+}
+
+#slide-change{
+	margin-left: 43px;
+}
+
+.btn-next{
+	margin-top: 25px;
+	background-color: $main-teal;
+	border-color: $main-teal;
+	color: white;
+	&:hover{
+		background-color: $main-teal;
+		border-color: $main-teal;
+		color: white;
+	}
+	&:active{
+		background-color: $text-teal;
+		border-color: $text-teal;
+		color: white;
+	}
+	&:focus{
+		background-color: $text-teal;
+		border-color: $text-teal;
+		color: white;
+	}
 }
 
 /* images */
 .thumbnail > img{
 	border: 2px solid;
+}
+
+.empty_picture{
+	background-color: #e8e8e3; /* gray */
+	padding-top: 73.5px;
+	padding-bottom: 73.5px;
+}
+
+.picture-grid{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 550px;
+}
+
+.thumb-input{
+	margin-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#picture{ /* from slideslot edit */
+	margin-top: 8px;
+	margin-bottom: 25px;
 }

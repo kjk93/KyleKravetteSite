@@ -1,0 +1,15 @@
+<ol class="picture-grid">
+	<div class="row">
+		<% @pictures.each do |picture| %>
+			<div class="col-xs-3">
+				<li class="thumbnail">
+					<%= form_for (@slideslot) do |f| %>
+						<div><%= hidden_field_tag :picture_url, picture.picture %></div>
+						<div><%= hidden_field_tag :picture_id, picture.id %></div>
+						<%= image_submit_tag picture.thumbnail.pic.url, class: "thumb-input" %>
+					<% end %>
+				</li>
+			</div>
+		<% end %>
+	</div>
+</ol>

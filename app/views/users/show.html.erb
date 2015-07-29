@@ -6,11 +6,18 @@
 	<div class="row">
 		<h2>Your Slideshow Pictures</h2>
 	</div>
+</div>
 
+<div class="container-fluid">
 	<div class="row">
-		For slidehow pictures
+		<ol class="slideslots">
+			<div class="col-xs-1"></div>
+			<%= render @slideslots %>
+		</ol>
 	</div>
+</div>
 
+<div class="container-fluid">
 	<div class="row">
 		<h2>Folders</h2>
 	</div>
@@ -38,6 +45,4 @@
 			</ol>
 		</div>
 	<% end %>
-
-
 </div>

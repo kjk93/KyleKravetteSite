@@ -13,6 +13,12 @@ class PicturesController < ApplicationController
 				@thumbnail = @picture.build_thumbnail(pic: pic)
 				@thumbnail.update_attributes(title: "#{@picture.title}_thumb")
 				if @thumbnail.save
+					#create snapshot
+					@snapshot = @picture.build_snapshot(image: pic)
+					@snapshot.update_attributes(title: "#{@picture.title}_snap")
+					if !@snapshot.save
+						message = "snapshot failed"
+					end
 					message += "saved picture #{count}, "
 					count += 1
 				else
@@ -45,7 +51,9 @@ class PicturesController < ApplicationController
 	def destroy
 		@picture = Picture.find(params[:id])
 		@thumbnail = @picture.thumbnail
+		@snapshot = @picture.snapshot
 		folder = Folder.find_by(id: @picture.folder_id)
+		@snapshot.delete
 		@thumbnail.delete
 		@picture.delete
 		flash[:success]="Picture deleted"

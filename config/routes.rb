@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'slideslots/edit'
+
+  get 'slideslots/update'
+
   get 'thumbnails/destroy'
 
   get 'thumbnail/destroy'
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resources :folders
   resources :pictures
+  resources :slideslots, only: [:edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

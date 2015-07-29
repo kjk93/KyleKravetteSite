@@ -1,0 +1,62 @@
+<% provide(:title, "Slot 1") %>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-2 col-xs-offset-1">
+			<%= link_to "< Portfolio", user_path(@slideslot.user_id), class: "btn btn-default main-nav" %>
+		</div>
+
+		<div class="col-xs-4 col-xs-offset-1">
+			<h1>Slideslot editor</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-2 col-xs-offset-1">
+			<% num = @slideslot.number %>
+			<% if (num - 1) < 1 %>
+				<% num = 5 %>
+			<% else %>
+				<% num = num - 1 %>
+			<% end %>
+			<%= link_to "< Slideslot #{num}", edit_slideslot_path(@slideslot.prevSlot), class: "btn btn-default btn-next" %>
+		</div>
+		<div class="col-xs-4 col-xs-offset-1">
+			<h1>Slideslot <%= " #{@slideslot.number}" %></h1>
+		</div>
+		<div class="col-xs-2 col-xs-offset-2">
+			<% num = @slideslot.number %>
+			<% if (num + 1) > 5 %>
+				<% num = 1 %>
+			<% else %>
+				<% num = num + 1 %>
+			<% end %>
+			<%= link_to "Slideslot #{num} >", edit_slideslot_path(@slideslot.nextSlot), class: "btn btn-default btn-next" %>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<% if @slideslot.picture.blank? %>
+			<h2>Slot <%= "#{@slideslot.number}" %> is empty, add a slot below</h2>
+	</div>
+			<%= render "all_pictures" %>
+			<!-- put picture scroll here -->
+		<% else %>
+			<center><%= image_tag @slideslot.picture, id: "picture" %></center>
+	</div>
+			<%= render "all_pictures" %>
+			<!-- put picture scroll here -->
+		<% end %>
+	<div class="row">
+		<center>
+			<%= form_for(@slideslot) do |f| %>
+				<div><%= hidden_field_tag :picture_url, nil %></div>
+				<div><%= hidden_field_tag :picture_id, nil %></div>
+				<%= f.submit "Remove picture", class: "btn btn-danger btn-lg" %>
+			<% end %>
+		</center>
+	</div>
+</div>
+

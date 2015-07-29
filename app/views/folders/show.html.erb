@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-2 col-xs-offset-1">
-			<%= link_to "< Folders", user_path(@folder.user_id), class: "btn btn-default", id: "folders" %>
+			<%= link_to "< Folders", user_path(@folder.user_id), class: "btn btn-default main-nav", id: "folders" %>
 		</div>
 		<div class="col-xs-4 col-xs-offset-1">
 			<h1><%="#{@folder.title}" %></h1>
@@ -14,12 +14,14 @@
 			</ol>
 		</div>
 		<%= render 'add_picture' %>
+		<%= render 'progress_modal' %>
 	<% else %>
 		<div class="center jumbotron">
 			<div class="row">
 				<h2><%= "#{@folder.title} has no pictures in it." %></h2>
 			</div>
 			<%= render 'add_picture' %>
+			<%= render 'progress_modal' %>
 		</div>
 	<% end %>
 </div>
