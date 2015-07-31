@@ -1,11 +1,12 @@
 class PicturesController < ApplicationController
 	def create
+		uploaded_pics = params[:picture][:pictures]
 		count = 1
 		message = ""
 		@folder = Folder.find(params[:folder])
 		count += @folder.pictures.count
 		name = @folder.title
-		params[:picture][:pictures].each do |pic|
+		uploaded_pics.each do |pic|
 			@picture = @folder.pictures.build(picture: pic)
 			@picture.update_attributes(order: count, title: "#{name}_#{count}", user_id: @folder.user_id)
 			if @picture.save

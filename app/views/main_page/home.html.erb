@@ -1,3 +1,26 @@
 <div class="container-fluid">
-test
+	<div class="row">
+		<h1>Kyle Kravette Lighting Design</h1>
+	</div>
+
+	<div class="row">
+		<span>
+			<div id="slideshow" class="carousel-slide" data-ride="carousel">
+
+				<!--indicators-->
+				<ol class="carousel-indicators">
+					<li data-target="#slideshow" data-slide-to="0" class="active"/>
+					<li data-target="#slideshow" data-slide-to="1"/>
+					<li data-target="#slideshow" data-slide-to="2"/>
+					<li data-target="#slideshow" data-slide-to="3"/>
+					<li data-target="#slideshow" data-slide-to="4"/>
+				</ol>
+				
+				<!-- wrapper -->
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<%= image_tag @user.slideslots.where("number = 1") %>
+						
+
+
 </div>
