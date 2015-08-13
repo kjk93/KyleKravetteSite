@@ -2,6 +2,7 @@ class Picture < ActiveRecord::Base
   belongs_to :folder
   has_one :thumbnail
   has_one :snapshot
+  has_one :display
   default_scope {order(order: :asc)}
   mount_uploader :picture, PicturesUploader
   validates :picture, presence: true, allow_blank: false

@@ -1,0 +1,13 @@
+<div class="row" id="caption-form-row">
+	<div class="col-xs-offset-4">
+		<%= form_for(@slideslot, html: {class: "form-inline", id: "caption-form"}) do |f| %>
+			<div class="form-group">
+				<%= f.label :caption, class: "control-label form-inline-label" %>
+				<%= f.text_field :caption, class: "form-control" %>
+				<div><%= hidden_field_tag :picture_url, @slideslot.picture %></div>
+				<div><%= hidden_field_tag :picture_id, @slideslot.picture_id %></div>
+			</div>
+			<%= f.submit "Add Caption", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

@@ -3,7 +3,18 @@
 		<center>
 			<%= f.file_field :pictures, multiple: true, id: "file_input" %>
 			<div><%= hidden_field_tag :folder, @folder.id %></div>
-			<%= f.submit "Add Pictures", data: {toggle: "modal", target: "#progress-modal"} class: "btn btn-primary btn-large" %>
+			<%= f.submit "Add Pictures", data: {toggle: "modal", target: "#progress-modal"}, disabled: true, title: "Add a picture", class: "btn btn-primary btn-large", id: "submit-btn" %>
 		</center>
 	<% end %>
 </div>
+
+<script>
+	$("#file_input").change(function(){
+		if($(this).val() == ""){
+			$("#submit-btn").attr("disabled", "disabled");
+		}
+		else{
+			$("#submit-btn").removeAttr("disabled");
+		}
+	});
+</script>

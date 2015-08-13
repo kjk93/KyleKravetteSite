@@ -6,6 +6,7 @@
 					<%= form_for (@slideslot) do |f| %>
 						<div><%= hidden_field_tag :picture_url, picture.picture %></div>
 						<div><%= hidden_field_tag :picture_id, picture.id %></div>
+						<div><%= f.hidden_field :caption %></div>
 						<%= image_submit_tag picture.thumbnail.pic.url, class: "thumb-input" %>
 					<% end %>
 				</li>

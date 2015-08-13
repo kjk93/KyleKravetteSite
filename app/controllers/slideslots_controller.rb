@@ -7,7 +7,10 @@ class SlideslotsController < ApplicationController
 
   def update
   	@slideslot = Slideslot.find(params[:id])
-  	if @slideslot.update_attributes(picture: params[:picture_url], picture_id: params[:picture_id])
+  	if @slideslot.update_attributes(picture: params[:picture_url], picture_id: params[:picture_id]) && @slideslot.update_attributes(slideslot_params)
+      if params[:remove]
+        @slideslot.update_attributes(caption: nil)
+      end
   		redirect_to edit_slideslot_path(@slideslot)
   	else
   		flash[:danger]="reassign failed"
@@ -17,6 +20,6 @@ class SlideslotsController < ApplicationController
   private
 
   	def slideslot_params
-  		params.require(:slideslot).permit(:picture)
+  		params.require(:slideslot).permit(:caption)
   	end
 end

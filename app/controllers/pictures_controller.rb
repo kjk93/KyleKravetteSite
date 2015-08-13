@@ -19,6 +19,12 @@ class PicturesController < ApplicationController
 					@snapshot.update_attributes(title: "#{@picture.title}_snap")
 					if !@snapshot.save
 						message = "snapshot failed"
+					else
+						#create display
+						@display = @picture.build_display(image: pic)
+						if !@display.save
+							message = "display failed"
+						end
 					end
 					message += "saved picture #{count}, "
 					count += 1
@@ -51,9 +57,17 @@ class PicturesController < ApplicationController
 
 	def destroy
 		@picture = Picture.find(params[:id])
+		@user = User.find_by(id: @picture.user_id)
 		@thumbnail = @picture.thumbnail
 		@snapshot = @picture.snapshot
+		@display = @picture.display
 		folder = Folder.find_by(id: @picture.folder_id)
+		@user.slideslots.each do |slot|
+			if (slot.picture_id == @picture.id)
+				slot.reset
+			end
+		end
+		@display.delete
 		@snapshot.delete
 		@thumbnail.delete
 		@picture.delete

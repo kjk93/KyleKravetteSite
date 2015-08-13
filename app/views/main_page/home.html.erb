@@ -1,26 +1,85 @@
-<div class="container-fluid">
+<div class="container-fluid" id="black-test">
 	<div class="row">
 		<h1>Kyle Kravette Lighting Design</h1>
 	</div>
 
 	<div class="row">
-		<span>
-			<div id="slideshow" class="carousel-slide" data-ride="carousel">
+		<div class="col-xs-8 col-xs-offset-2">
+			<div id="slideshow" class="carousel slide" data-ride="carousel">
 
 				<!--indicators-->
 				<ol class="carousel-indicators">
-					<li data-target="#slideshow" data-slide-to="0" class="active"/>
-					<li data-target="#slideshow" data-slide-to="1"/>
-					<li data-target="#slideshow" data-slide-to="2"/>
-					<li data-target="#slideshow" data-slide-to="3"/>
-					<li data-target="#slideshow" data-slide-to="4"/>
+					<li data-target="#slideshow" data-slide-to="0" class="active"></li>
+					<li data-target="#slideshow" data-slide-to="1"></li>
+					<li data-target="#slideshow" data-slide-to="2"></li>
+					<li data-target="#slideshow" data-slide-to="3"></li>
+					<li data-target="#slideshow" data-slide-to="4"></li>
 				</ol>
 				
 				<!-- wrapper -->
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<%= image_tag @user.slideslots.where("number = 1") %>
-						
+				<center>
+					<div class="carousel-inner" role="listbox">
+						<% slot = @slideslots[0] %>
+						<% unless slot.picture.blank? %>
+							<div class="item active">
+								<% pic_tag = Picture.find_by(id: slot.picture_id).display.image %>
+								<%= link_to image_tag(pic_tag, alt: "slideslot 1"), '#' %>
+								<div class="carousel-caption">
+									<%= slot.caption %>
+								</div>
+							</div>
+						<% end %>
+						<% slot = @slideslots[1] %>
+						<% unless slot.picture.blank? %>
+							<div class="item">
+								<% pic_tag = Picture.find_by(id: slot.picture_id).display.image %>
+								<%= link_to image_tag(pic_tag, alt: "slideslot 2"), '#' %>
+								<div class="carousel-caption">
+									<%= slot.caption %>
+								</div>
+							</div>
+						<% end %>
+						<% slot = @slideslots[2] %>
+						<% unless slot.picture.blank? %>
+							<div class="item">
+								<% pic_tag = Picture.find_by(id: slot.picture_id).display.image %>
+								<%= link_to image_tag(pic_tag, alt: "slideslot 3"), '#' %>
+								<div class="carousel-caption">
+									<%= slot.caption %>
+								</div>
+							</div>
+						<% end %>
+						<% slot = @slideslots[3] %>
+						<% unless slot.picture.blank? %>
+							<div class="item">	
+								<% pic_tag = Picture.find_by(id: slot.picture_id).display.image %>
+								<%= link_to image_tag(pic_tag, alt: "slideslot 4"), '#' %>
+								<div class="carousel-caption">
+									<%= slot.caption %>
+								</div>
+							</div>
+						<% end %>
+						<% slot = @slideslots[4] %>
+						<% unless slot.picture.blank? %>
+							<div class="item">
+								<% pic_tag = Picture.find_by(id: slot.picture_id).display.image %>
+								<%= link_to image_tag(pic_tag, alt: "slideslot 5"), '#' %>
+								<div class="carousel-caption">
+									<%= slot.caption %>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</center>
 
-
+				<!-- controls -->
+				<a class="left carousel-control" href="#slideshow" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#slideshow" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+		</div>
+	</div>
 </div>

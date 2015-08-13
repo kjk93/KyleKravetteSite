@@ -10,6 +10,8 @@
 $main-teal: #18c7a4;
 $text-teal: #28a189;
 $hover-orange: #eb8a0c;
+$light-black: #474540;
+$light-gray: #eaeaea;
 
 /* universal */
 .center{
@@ -23,15 +25,37 @@ h1, h2{
 	text-align: center;
 }
 
+#caption-form-row{
+	margin-bottom: 22px;
+}
+
+#caption-form{
+	margin-left: 21px;
+}
+
+.form-inline-label{
+	font-size: 26px;
+}
+
+body{
+	padding-top: 70px;
+}
+
 /* Logo */
 #logo{
 	a{
 		color: $main-teal;
 		font-size: 24pt;
-		line-height: normal;
+		line-height: 20px;
 		letter-spacing: -2px;
 		text-decoration: none;
 	}
+}
+
+/* header */
+.navbar{
+	background-color: white;
+	border-bottom: $light-gray 1px solid;
 }
 
 /* Tabs */
@@ -57,7 +81,7 @@ footer{
 	margin-top: 45px;
 	padding-top: 5px;
 	padding-left: 20px;
-	border-top: 1px solid #eaeaea;
+	border-top: 1px solid $light-gray;
 	opacity: .7;
 	color: gray;
 
@@ -167,4 +191,50 @@ footer{
 #picture{ /* from slideslot edit */
 	margin-top: 8px;
 	margin-bottom: 25px;
+}
+
+#slideshow{
+	background-color: white;
+}
+
+/* carousel */
+.carousel-caption{
+	font-size: 24pt;
+	background-color: black;
+	opacity: .8;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.glyphicon{
+	color: $light-black
+}
+
+.carousel-control{
+	background-color: white;
+	border: 1px solid;
+	border-color: #dbdbdb;
+	opacity: 1;
+	width: 5%;
+	&:hover{
+		opacity: 1;
+		background-color: #e8e8e8;
+		border: 2px solid;
+		border-color: #f0f0f0;
+	}
+	&:focus{
+		opacity: 1;
+	}
+}
+
+.carousel-control.left{
+	background-image: none;
+}
+
+.carousel-control.right{
+	background-image: none;
+}
+
+.carousel-control:hover, .carousel-control:focus{
+	opacity: 1;
 }

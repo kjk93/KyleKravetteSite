@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729200803) do
+ActiveRecord::Schema.define(version: 20150805020202) do
+
+  create_table "displays", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "picture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "displays", ["picture_id"], name: "index_displays_on_picture_id"
 
 # Could not dump table "folders" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

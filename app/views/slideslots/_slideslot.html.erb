@@ -1,6 +1,6 @@
 <div class="col-xs-2">
 	<div class="thumbnail">
-		<% if slideslot.picture.nil? %>
+		<% if slideslot.picture_id.nil? %>
 			<%= content_tag(:a, content_tag(:div, content_tag(:center, tag("span", class: "glyphicon glyphicon-plus")), class: "empty_picture"), href: "/slideslots/#{slideslot.id}/edit") %>
 			<div class="caption">
 				<p>Add picture to slideshow</p>

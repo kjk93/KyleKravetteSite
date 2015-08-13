@@ -19,4 +19,8 @@ class Slideslot < ActiveRecord::Base
   		slots.fetch(n).id
   	end
   end
+
+  def reset
+    update_attributes(picture: nil, picture_id: nil, caption: nil)
+  end
 end
