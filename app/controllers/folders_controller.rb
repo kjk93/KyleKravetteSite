@@ -5,7 +5,7 @@ class FoldersController < ApplicationController
 		@folder = current_user.folders.build(folder_params)
 		if @folder.save
 			flash[:success]="#{@folder.title} folder has been created"
-			redirect_to @folder
+			redirect_to edit_folder_path(@folder)
 		else
 			flash[:danger]="Folder did not save"
 		end
@@ -37,6 +37,11 @@ class FoldersController < ApplicationController
 		@folder.delete
 		flash[:success]="#{@folder.title} deleted"
 		redirect_to user
+	end
+
+	def view
+		@folder = Folder.find(params[:id])
+		@pictures = @folder.pictures
 	end
 
 	private

@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   get 'thumbnail/destroy'
 
-  root 'main_page#temp'
-  get 'home' => 'main_page#home'
+  root 'main_page#home'
+  get 'preview' => 'main_page#temp'
+  get 'photos' => 'main_page#photos'
   get 'admin' => 'sessions#new'
   post 'admin' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   #get 'users/:id' => 'users#show', as: 'user'
   resources :users, only: [:new, :create, :show]
   resources :folders
+  get 'folder/:id' => 'folders#view', as: 'view_folder'
   resources :pictures
   resources :slideslots, only: [:edit, :update]
 

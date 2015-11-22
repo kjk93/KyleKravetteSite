@@ -6,4 +6,9 @@ class MainPageController < ApplicationController
 
   def temp
   end
+
+  def photos
+  	@user = User.first
+  	@folders = @user.folders
+  end
 end

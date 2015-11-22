@@ -1,0 +1,21 @@
+<!-- Needs to be completed -->
+
+
+
+<% @folders.each do |folder| %>
+	<div class="col-xs-3">
+		<div class="thumbnail">
+			<div class="caption">
+				<p><strong><%= "#{folder.title}" %></strong></p>
+			</div>
+			<% num = 0 %>
+			<% pictures = folder.picutres %>
+			<% if num == 0 %>
+				<%= link_to image_tag(pictures[num].picture, alt: "first image", class: "image-active", id: "image-#{folder.title}"), view_folder_path(folder.id) %>
+			<% else %>
+				<%= link_to image_tag(pictures[num].picture, alt: "first image", class: "image-active", id: "image-#{folder.title}"), view_folder_path(folder.id) %>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+

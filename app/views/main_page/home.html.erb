@@ -9,11 +9,21 @@
 
 				<!--indicators-->
 				<ol class="carousel-indicators">
-					<li data-target="#slideshow" data-slide-to="0" class="active"></li>
-					<li data-target="#slideshow" data-slide-to="1"></li>
-					<li data-target="#slideshow" data-slide-to="2"></li>
-					<li data-target="#slideshow" data-slide-to="3"></li>
-					<li data-target="#slideshow" data-slide-to="4"></li>
+					<% unless @slideslots[0].picture.blank? %>
+						<li data-target="#slideshow" data-slide-to="0" class="active"></li>
+					<% end %>
+					<% unless @slideslots[1].picture.blank? %>
+						<li data-target="#slideshow" data-slide-to="1"></li>
+					<% end %>
+					<% unless @slideslots[2].picture.blank? %>
+						<li data-target="#slideshow" data-slide-to="2"></li>
+					<% end %>
+					<% unless @slideslots[3].picture.blank? %>
+						<li data-target="#slideshow" data-slide-to="3"></li>
+					<% end %>
+					<% unless @slideslots[4].picture.blank? %>
+						<li data-target="#slideshow" data-slide-to="4"></li>
+					<% end %>
 				</ol>
 				
 				<!-- wrapper -->
