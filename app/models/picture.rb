@@ -1,8 +1,8 @@
 class Picture < ActiveRecord::Base
   belongs_to :folder
-  has_one :thumbnail
-  has_one :snapshot
-  has_one :display
+  has_one :thumbnail, dependent: :destroy
+  has_one :snapshot, dependent: :destroy
+  has_one :display, dependent: :destroy
   default_scope {order(order: :asc)}
   mount_uploader :picture, PicturesUploader
   validates :picture, presence: true, allow_blank: false

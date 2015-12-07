@@ -1,4 +1,4 @@
-<% provide(:title, "Slot 1") %>
+<% provide(:title, "Slot #{@slideslot.number}") %>
 
 <div class="container-fluid">
 	<div class="row">
@@ -39,7 +39,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<% if @slideslot.picture.blank? %>
-			<h2>Slot <%= "#{@slideslot.number}" %> is empty, add a slot below</h2>
+			<h2>Slot <%= "#{@slideslot.number}" %> is empty, add a picture from below</h2>
 	</div>
 			<%= render "all_pictures" %>
 			<!-- put picture scroll here -->

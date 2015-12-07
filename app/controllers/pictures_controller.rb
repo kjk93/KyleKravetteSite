@@ -37,7 +37,7 @@ class PicturesController < ApplicationController
 		end
 		flash[:success] = message
 
-		redirect_to @folder
+		redirect_to edit_folder_path(@folder)
 	end
 
 	def edit
@@ -48,7 +48,7 @@ class PicturesController < ApplicationController
 		@picture = Picture.find(params[:id])
 		if @picture.update_attributes(picture_params)
 			flash[:success]="#{@picture.title} was updated!"
-			redirect_to folder_path(@picture.folder_id)
+			redirect_to edit_folder_path(@picture.folder_id)
 		else
 			flash[:warning]="#{@picture.title} failed to update"
 			redirect_to edit_picture_path(@picture)
@@ -57,20 +57,31 @@ class PicturesController < ApplicationController
 
 	def destroy
 		@picture = Picture.find(params[:id])
+		debugger
 		@user = User.find_by(id: @picture.user_id)
+		debugger
 		@thumbnail = @picture.thumbnail
+		debugger
 		@snapshot = @picture.snapshot
+		debugger
 		@display = @picture.display
+		debugger
 		folder = Folder.find_by(id: @picture.folder_id)
+		debugger
 		@user.slideslots.each do |slot|
 			if (slot.picture_id == @picture.id)
 				slot.reset
 			end
 		end
+		debugger
 		@display.delete
+		debugger
 		@snapshot.delete
+		debugger
 		@thumbnail.delete
+		debugger
 		@picture.delete
+		debugger
 		flash[:success]="Picture deleted"
 		redirect_to folder
 	end

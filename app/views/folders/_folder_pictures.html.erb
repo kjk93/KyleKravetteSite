@@ -1,0 +1,15 @@
+<% if @pictures.count > 8 %>
+	<ol class="picture-grid">
+<% else %>
+	<ol class="picture-grid-no-scroll">
+<% end %>
+		<div class="row">
+			<% @pictures.each do |picture| %>
+				<div class="col-xs-3">
+					<li class="thumbnail">
+						<%= image_tag picture.thumbnail.pic.url %>
+					</li>
+				</div>
+			<% end %>
+		</div>
+	</ol>

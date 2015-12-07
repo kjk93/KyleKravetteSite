@@ -184,6 +184,12 @@ footer{
 	padding-bottom: 73.5px;
 }
 
+.picture-grid-no-scroll{
+	overflow-y: hidden;
+	overflow-x: hidden;
+	max-height: 550px;
+}
+
 .picture-grid{
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -220,7 +226,7 @@ footer{
 
 .carousel-control{
 	background-color: white;
-	border: 1px solid;
+	
 	border-color: #dbdbdb;
 	opacity: 1;
 	width: 5%;

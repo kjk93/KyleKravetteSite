@@ -10,14 +10,15 @@ class FoldersController < ApplicationController
 			flash[:danger]="Folder did not save"
 		end
 	end
-
+=begin
 	def show
 		@folder = Folder.find(params[:id])
 		@pictures = @folder.pictures
 	end
-
+=end
 	def edit
 		@folder = Folder.find(params[:id])
+		@pictures = @folder.pictures
 	end
 
 	def update
@@ -33,6 +34,10 @@ class FoldersController < ApplicationController
 
 	def destroy
 		@folder = Folder.find(params[:id])
+		pics = @folder.pictures
+		pics.each do |pic|
+			pic.destroy
+		end
 		user = User.find_by(id: @folder.user_id)
 		@folder.delete
 		flash[:success]="#{@folder.title} deleted"
